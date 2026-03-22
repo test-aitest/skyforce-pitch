@@ -315,64 +315,6 @@
     line-height: 1;
   }
 
-  /* =====================
-     SPEAKER NOTES
-  ===================== */
-  .notes-btn {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    z-index: 9999;
-    background: var(--gray-800);
-    color: var(--gray-400);
-    border: 1px solid var(--gray-600);
-    padding: 7px 13px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: all 0.2s;
-  }
-
-  .notes-btn:hover {
-    background: var(--cyan);
-    color: #000;
-    border-color: var(--cyan);
-  }
-
-  #notes-panel {
-    display: none;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: #0a0a0c;
-    border-top: 2px solid var(--cyan);
-    z-index: 9998;
-    padding: 18px 32px 24px;
-    max-height: 36vh;
-    overflow-y: auto;
-  }
-
-  #notes-panel.visible { display: block; }
-
-  #notes-panel h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin: 0 0 10px;
-  }
-
-  #notes-content {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--gray-400);
-    line-height: 1.75;
-    white-space: pre-wrap;
-  }
 </style>
 </head>
 <body>
@@ -381,7 +323,7 @@
 <div class="slides">
 
 <!-- SLIDE 0: VIDEO INTRO -->
-<section data-notes='PR動画 7秒。終わったら自動でSlide 1へ。何もしなくてOK。' style="overflow:visible;padding:0;margin:0;">
+<section style="overflow:visible;padding:0;margin:0;">
   <div style="display:flex;align-items:center;justify-content:center;width:1280px;height:720px;">
     <video
       id="intro-video"
@@ -393,10 +335,7 @@
 </section>
 
 <!-- SLIDE 1: TITLE -->
-<section data-notes='"Move your head. Or you're dead."
-That's SkyForce. A phone game — where you never touch your phone.
-
-⏱ 10sec — say the line, pause, go. Silence lands harder than explanation.'>
+<section>
   <div class="scanlines"></div>
   <div class="title-wrap">
     <div class="title-game-name">SKYFORCE</div>
@@ -409,16 +348,7 @@ That's SkyForce. A phone game — where you never touch your phone.
 </section>
 
 <!-- SLIDE 2: PROBLEM -->
-<section data-notes='"Quick question — how many of you own AirPods?" (hands up)
-"Keep your hand up if you've used them to listen to music." (still up)
-"Keep it up if you've taken a call." (still up)
-"Keep it up if you've ever used them as a game controller." (pause... hands down)
-"Exactly."
-"150 million AirPods sold. Zero games built for them."
-"You've been carrying a flight controller in your ears this whole time."
-"Nobody noticed. Until now."
-
-⏱ 60sec — the silence after hands go down IS the punchline. Do not rush it.'>
+<section>
   <div class="inner-wrap">
     <div class="slide-label-inline">Problem</div>
     <div class="prob-layout">
@@ -434,15 +364,7 @@ That's SkyForce. A phone game — where you never touch your phone.
 </section>
 
 <!-- SLIDE 3: DEMO -->
-<section data-notes='"I'm not going to explain it. I'm going to do it. Right now."
-"Watch my head — not my hands."
-
-(LIVE DEMO: tilt to fly → press to fire → triple press to boost)
-
-"Tilt → fly. Press → fire. Triple press → 3x speed."
-"My thumbs? Completely useless." (wiggle thumbs at audience — get the laugh)
-
-⏱ 90sec — silence during the demo is maximum impact.'>
+<section>
   <div class="inner-wrap">
     <div class="slide-label-inline">Demo</div>
     <div class="demo-box">
@@ -455,15 +377,7 @@ That's SkyForce. A phone game — where you never touch your phone.
 </section>
 
 <!-- SLIDE 4: TEAM + SPONSORS -->
-<section data-notes='"Two people built this." (pause)
-"Both named Tatsuki." (wait for the laugh — it will come)
-"One engineers. One products. 48 hours. No sleep. No excuses."
-"ElevenLabs for the AI commander voice."
-"Lovable to ship fast."
-"RevenueCat to get paid."
-"Tatsuki squared. Powered by all three."
-
-⏱ 40sec — milk the "Both named Tatsuki" pause. That is your biggest laugh.'>
+<section>
   <div class="inner-wrap">
     <div class="slide-label-inline">Team &amp; Stack</div>
     <div class="ts-layout">
@@ -494,15 +408,7 @@ That's SkyForce. A phone game — where you never touch your phone.
 </section>
 
 <!-- SLIDE 5: CLOSING (= SLIDE 1) -->
-<section data-notes='"Right now, 150 million people have AirPods in their ears."
-"None of them are dodging missiles."
-"We think that's a waste."
-(pause — look up slowly)
-"Move your head."
-"Or you're dead."
-"Thank you."
-
-⏱ 20sec — repeat the catchphrase. Pause hard after "dead." Walk off. Do not add anything.'>
+<section>
   <div class="scanlines"></div>
   <div class="title-wrap">
     <div class="title-game-name">SKYFORCE</div>
@@ -517,11 +423,6 @@ That's SkyForce. A phone game — where you never touch your phone.
 </div>
 </div>
 
-<button class="notes-btn" onclick="toggleNotes()">📋 Notes</button>
-<div id="notes-panel">
-  <h4>Speaker Notes</h4>
-  <div id="notes-content">Select a slide to see notes.</div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
 <script>
@@ -538,23 +439,6 @@ That's SkyForce. A phone game — where you never touch your phone.
     backgroundTransition: 'fade',
   });
 
-  // --- Video intro logic ---
-  // Video has controls; user clicks play manually.
-
-  function toggleNotes() {
-    document.getElementById('notes-panel').classList.toggle('visible');
-    updateNotes();
-  }
-
-  function updateNotes() {
-    const panel = document.getElementById('notes-panel');
-    if (!panel.classList.contains('visible')) return;
-    const slide = Reveal.getCurrentSlide();
-    document.getElementById('notes-content').textContent =
-      slide ? (slide.getAttribute('data-notes') || 'No notes.') : '';
-  }
-
-  Reveal.on('slidechanged', updateNotes);
 </script>
 </body>
 </html>
