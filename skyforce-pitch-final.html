@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyForce — Pitch</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --r-background-color: #09090b;
+    --r-main-font: 'DM Sans', sans-serif;
+    --r-main-font-size: 28px;
+    --r-main-color: #f4f4f5;
+    --r-heading-font: 'Bebas Neue', sans-serif;
+    --r-heading-color: #f4f4f5;
+    --r-heading-letter-spacing: 0.02em;
+    --r-heading-text-transform: uppercase;
+    --r-heading-font-weight: 400;
+    --cyan: #00c8e8;
+    --cyan-dim: rgba(0,200,232,0.15);
+    --gray-300: #d4d4d8;
+    --gray-400: #a1a1aa;
+    --gray-600: #52525b;
+    --gray-800: #27272a;
+    --black2: #0f0f12;
+  }
+
+  .reveal { font-weight: 400; }
+  .reveal p { color: var(--gray-400); line-height: 1.6; }
+  .reveal section { position: relative; overflow: hidden; }
+
+  .accent { color: var(--cyan); }
+
+  /* =====================
+     SLIDE LABEL (top-left)
+  ===================== */
+  /* .slide-label legacy — replaced by .slide-label-inline */
+
+  /* scanlines */
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* =====================
+     SLIDE 1 & 5 — TITLE
+  ===================== */
+  @keyframes glitch {
+    0%,87%,100% { text-shadow: none; transform: none; }
+    88% { text-shadow: -3px 0 #ff2d55, 3px 0 var(--cyan); transform: skewX(-2deg); }
+    90% { text-shadow: none; transform: skewX(1deg); }
+    92% { text-shadow: -2px 0 #ff2d55; transform: none; }
+    94% { text-shadow: none; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title-game-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 7em;
+    line-height: 0.95;
+    letter-spacing: 0.06em;
+    color: var(--r-main-color);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .title-rule {
+    width: 64px;
+    height: 2px;
+    background: var(--cyan);
+    margin: 18px auto;
+    animation: fadeUp 0.5s 0.1s ease both;
+    box-shadow: 0 0 10px var(--cyan);
+  }
+
+  .title-catchphrase {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6em;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    color: var(--r-main-color);
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .dead {
+    color: var(--cyan);
+    display: inline-block;
+    text-shadow: 0 0 20px var(--cyan);
+    animation: glitch 5s 1.5s infinite;
+  }
+
+  /* =====================
+     INNER WRAP — slides 2-4
+     ラベル＋コンテンツをまとめて
+     上揃えで縦に並べる
+  ===================== */
+  .inner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  .slide-label-inline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .slide-label-inline::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+    flex-shrink: 0;
+  }
+
+  
+  .prob-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    width: 100%;
+  }
+
+  .prob-block { text-align: center; }
+
+  .prob-num {
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .prob-num.big  { font-size: 130px; color: var(--r-main-color); }
+  .prob-num.zero {
+    font-size: 170px;
+    color: var(--cyan);
+    text-shadow: 0 0 40px rgba(0,200,232,0.4);
+  }
+
+  .prob-divider {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--gray-800);
+    letter-spacing: 0;
+  }
+
+  /* =====================
+     SLIDE 3 — DEMO
+  ===================== */
+  .demo-box {
+    width: 760px;
+    max-width: 88vw;
+    aspect-ratio: 16 / 9;
+    background: #111114;
+    border: 1px solid var(--gray-800);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px auto 0;
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .demo-box:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 24px rgba(0,200,232,0.15);
+  }
+
+  .demo-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .play-ring {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-600);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .demo-box:hover .play-ring {
+    border-color: var(--cyan);
+    box-shadow: 0 0 16px rgba(0,200,232,0.3);
+  }
+
+  .play-ring::after {
+    content: '';
+    border-left: 20px solid var(--gray-400);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+    transition: border-left-color 0.25s;
+  }
+
+  .demo-box:hover .play-ring::after { border-left-color: var(--cyan); }
+
+  .demo-filename {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gray-600);
+    letter-spacing: 0.08em;
+  }
+
+  /* =====================
+     SLIDE 4 — TEAM + SPONSORS
+  ===================== */
+  .ts-layout {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    width: 100%;
+    align-items: center;
+    min-height: 360px;
+  }
+
+  .ts-divider-line {
+    width: 1px;
+    height: 280px;
+    background: var(--gray-800);
+    margin: auto;
+  }
+
+  .team-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 24px;
+  }
+
+  .t-squared-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10em;
+    color: var(--cyan);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: inline-block;
+    text-shadow: 0 0 60px rgba(0,200,232,0.35);
+  }
+
+  .t-squared-mark sup {
+    font-size: 0.42em;
+    vertical-align: super;
+    color: var(--r-main-color);
+    letter-spacing: 0;
+    text-shadow: none;
+  }
+
+  .sponsor-side {
+    padding-left: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    justify-content: center;
+  }
+
+  .sponsor-item {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .sponsor-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    margin-right: 16px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .sponsor-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8em;
+    color: var(--r-main-color);
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+
+  /* =====================
+     SPEAKER NOTES
+  ===================== */
+  .notes-btn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 9999;
+    background: var(--gray-800);
+    color: var(--gray-400);
+    border: 1px solid var(--gray-600);
+    padding: 7px 13px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+
+  .notes-btn:hover {
+    background: var(--cyan);
+    color: #000;
+    border-color: var(--cyan);
+  }
+
+  #notes-panel {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #0a0a0c;
+    border-top: 2px solid var(--cyan);
+    z-index: 9998;
+    padding: 18px 32px 24px;
+    max-height: 36vh;
+    overflow-y: auto;
+  }
+
+  #notes-panel.visible { display: block; }
+
+  #notes-panel h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin: 0 0 10px;
+  }
+
+  #notes-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--gray-400);
+    line-height: 1.75;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 0: VIDEO INTRO -->
+<section data-notes='PR動画 7秒。終わったら自動でSlide 1へ。何もしなくてOK。' style="overflow:visible;padding:0;margin:0;">
+  <div style="display:flex;align-items:center;justify-content:center;width:1280px;height:720px;">
+    <video
+      id="intro-video"
+      src="overview_hero1.mp4"
+      controls
+      style="width:100%;height:100%;object-fit:cover;"
+    ></video>
+  </div>
+</section>
+
+<!-- SLIDE 1: TITLE -->
+<section data-notes='"Move your head. Or you're dead."
+That's SkyForce. A phone game — where you never touch your phone.
+
+⏱ 10sec — say the line, pause, go. Silence lands harder than explanation.'>
+  <div class="scanlines"></div>
+  <div class="title-wrap">
+    <div class="title-game-name">SKYFORCE</div>
+    <div class="title-rule"></div>
+    <div class="title-catchphrase">
+      Move your head.<br>
+      Or you're <span class="dead">DEAD.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: PROBLEM -->
+<section data-notes='"Quick question — how many of you own AirPods?" (hands up)
+"Keep your hand up if you've used them to listen to music." (still up)
+"Keep it up if you've taken a call." (still up)
+"Keep it up if you've ever used them as a game controller." (pause... hands down)
+"Exactly."
+"150 million AirPods sold. Zero games built for them."
+"You've been carrying a flight controller in your ears this whole time."
+"Nobody noticed. Until now."
+
+⏱ 60sec — the silence after hands go down IS the punchline. Do not rush it.'>
+  <div class="inner-wrap">
+    <div class="slide-label-inline">Problem</div>
+    <div class="prob-layout">
+      <div class="prob-block">
+        <div class="prob-num big">150M</div>
+      </div>
+      <div class="prob-divider">vs</div>
+      <div class="prob-block">
+        <div class="prob-num zero">0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: DEMO -->
+<section data-notes='"I'm not going to explain it. I'm going to do it. Right now."
+"Watch my head — not my hands."
+
+(LIVE DEMO: tilt to fly → press to fire → triple press to boost)
+
+"Tilt → fly. Press → fire. Triple press → 3x speed."
+"My thumbs? Completely useless." (wiggle thumbs at audience — get the laugh)
+
+⏱ 90sec — silence during the demo is maximum impact.'>
+  <div class="inner-wrap">
+    <div class="slide-label-inline">Demo</div>
+    <div class="demo-box">
+      <div class="demo-inner">
+        <div class="play-ring"></div>
+        <div class="demo-filename">demo.mp4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: TEAM + SPONSORS -->
+<section data-notes='"Two people built this." (pause)
+"Both named Tatsuki." (wait for the laugh — it will come)
+"One engineers. One products. 48 hours. No sleep. No excuses."
+"ElevenLabs for the AI commander voice."
+"Lovable to ship fast."
+"RevenueCat to get paid."
+"Tatsuki squared. Powered by all three."
+
+⏱ 40sec — milk the "Both named Tatsuki" pause. That is your biggest laugh.'>
+  <div class="inner-wrap">
+    <div class="slide-label-inline">Team &amp; Stack</div>
+    <div class="ts-layout">
+
+      <div class="team-side">
+        <div class="t-squared-mark">T<sup>2</sup></div>
+      </div>
+
+      <div class="ts-divider-line"></div>
+
+      <div class="sponsor-side">
+        <div class="sponsor-item">
+          <span class="sponsor-num">01</span>
+          <span class="sponsor-name">ElevenLabs</span>
+        </div>
+        <div class="sponsor-item">
+          <span class="sponsor-num">02</span>
+          <span class="sponsor-name">Lovable</span>
+        </div>
+        <div class="sponsor-item">
+          <span class="sponsor-num">03</span>
+          <span class="sponsor-name">RevenueCat</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: CLOSING (= SLIDE 1) -->
+<section data-notes='"Right now, 150 million people have AirPods in their ears."
+"None of them are dodging missiles."
+"We think that's a waste."
+(pause — look up slowly)
+"Move your head."
+"Or you're dead."
+"Thank you."
+
+⏱ 20sec — repeat the catchphrase. Pause hard after "dead." Walk off. Do not add anything.'>
+  <div class="scanlines"></div>
+  <div class="title-wrap">
+    <div class="title-game-name">SKYFORCE</div>
+    <div class="title-rule"></div>
+    <div class="title-catchphrase">
+      Move your head.<br>
+      Or you're <span class="dead">DEAD.</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<button class="notes-btn" onclick="toggleNotes()">📋 Notes</button>
+<div id="notes-panel">
+  <h4>Speaker Notes</h4>
+  <div id="notes-content">Select a slide to see notes.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: false,
+    controls: true,
+    progress: true,
+    center: true,
+    transition: 'fade',
+    transitionSpeed: 'slow',
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    backgroundTransition: 'fade',
+  });
+
+  // --- Video intro logic ---
+  // Video has controls; user clicks play manually.
+
+  function toggleNotes() {
+    document.getElementById('notes-panel').classList.toggle('visible');
+    updateNotes();
+  }
+
+  function updateNotes() {
+    const panel = document.getElementById('notes-panel');
+    if (!panel.classList.contains('visible')) return;
+    const slide = Reveal.getCurrentSlide();
+    document.getElementById('notes-content').textContent =
+      slide ? (slide.getAttribute('data-notes') || 'No notes.') : '';
+  }
+
+  Reveal.on('slidechanged', updateNotes);
+</script>
+</body>
+</html>
